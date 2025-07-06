@@ -43,7 +43,7 @@ const questions = [
 
 const celebrity = {
     name: "春日寿子",
-    image: "toshiko.jpg"
+    image: "t-diagnosis/toshiko.jpg"
 };
 
 const questionContainer = document.getElementById('question-container');
