@@ -53,6 +53,7 @@ const answersElement = document.getElementById('answers');
 const celebrityImage = document.getElementById('celebrity-image');
 const celebrityName = document.getElementById('celebrity-name');
 const retryButton = document.getElementById('retry-button');
+const backButton = document.getElementById('back-button');
 
 let currentQuestionIndex = 0;
 
@@ -66,6 +67,12 @@ function showQuestion() {
         button.addEventListener('click', handleAnswer);
         answersElement.appendChild(button);
     });
+
+    if (currentQuestionIndex > 0) {
+        backButton.classList.remove('hidden');
+    } else {
+        backButton.classList.add('hidden');
+    }
 }
 
 function handleAnswer() {
@@ -82,6 +89,7 @@ function showResult() {
     resultContainer.classList.remove('hidden');
     celebrityImage.src = celebrity.image;
     celebrityName.textContent = celebrity.name;
+    backButton.classList.add('hidden'); // 結果表示中は戻るボタンを非表示
 }
 
 function retry() {
@@ -91,6 +99,12 @@ function retry() {
     showQuestion();
 }
 
+function goBack() {
+    currentQuestionIndex--;
+    showQuestion();
+}
+
 retryButton.addEventListener('click', retry);
+backButton.addEventListener('click', goBack);
 
 showQuestion();
